@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="shapka">
+    <img src="{% static 'list/shapka.jpg' %}" alt="">
+</div>
+<div class="content">
+    <div class="wrap">
+        {% block co %}
+        {% endblock %}
+    </div>
+</div>
+
+</body>
+</html>

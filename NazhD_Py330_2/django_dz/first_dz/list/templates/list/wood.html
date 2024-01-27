@@ -1,0 +1,18 @@
+{% extends 'list/base.html' %}
+
+{% block co %}
+
+<h1 class="zag">Metal</h1>
+
+<div class="textures">
+    {% for texture in textures %}
+    {% if texture.type_texter == 'Дерево' %}
+    <div class="texture">
+        <h2>{{ texture.name_texter }}</h2>
+        <div class="img"><a href="{{ texture.url }}" target="_blank"><img src="{{ texture.image.url }}" alt=""></a></div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}
