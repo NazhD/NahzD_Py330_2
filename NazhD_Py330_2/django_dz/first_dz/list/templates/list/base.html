@@ -7,13 +7,37 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<div class="shapka">
-    <img src="{% static 'list/shapka.jpg' %}" alt="">
-</div>
-<div class="content">
-    <div class="wrap">
-        {% block co %}
-        {% endblock %}
+<div class="all">
+    <div class="shapka">
+        <img src="{% static 'list/shapka.jpg' %}" alt="">
+    </div>
+    <div class="content">
+        <div class="wrap">
+            {% block co %}
+            {% endblock %}
+        </div>
+        <div class="me">
+            <div class="menu">
+            <div>{{ error }}</div>
+            {% if user.is_authenticated %}
+                <div class="user">{{ user.username }}</div>
+                <ul class="men">
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                <form action="{% url 'logoutuser' %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn">Выход</button>
+                </form>
+                </ul>
+            {% else %}
+                <div class="user">Гость</div>
+                <ul class="men">
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                    <li><a href="{% url 'reg' %}">Регистрация</a></li>
+                    <li><a href="{% url 'loginuser' %}">Вход</a></li>
+                </ul>
+            {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 

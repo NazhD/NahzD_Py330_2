@@ -1,5 +1,5 @@
 """
-URL configuration for first_dz project.
+URL configuration for todos project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -15,16 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from django.conf.urls.static import static
-from django.conf import settings
-from list import views
+from django.urls import path
+from todo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.list_texter, name='index'),
-    path('user/', include('avtoreg.urls')),
-    path('<type>/', views.typetexter, name="typetexter"),
-]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # Auth
+    path('signup/', views.signupuser, name="signupuser"),
+    path('logout/', views.logoutuser, name="logoutuser"),
+path('login/', views.loginuser, name="loginuser"),
+
+    # Todos
+    path('current', views.currenttodes, name="currenttodes"),
+    path('', views.home, name="home"),
+
+]
